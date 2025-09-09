@@ -30,7 +30,8 @@ PYMIDIGetEndpointName (MIDIEndpointRef midiEndpointRef)
     
     if (endpointName != nil) {
         if (deviceName != nil) {
-            bool endpointNameBeginsWithDeviceName = 
+            bool endpointNameBeginsWithDeviceName =
+                CFStringGetLength (deviceName) < CFStringGetLength (endpointName) &&
                 CFStringCompareWithOptions (
                     endpointName, deviceName,
                     CFRangeMake(0, CFStringGetLength (deviceName)),
